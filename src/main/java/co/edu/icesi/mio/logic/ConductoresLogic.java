@@ -1,5 +1,8 @@
 package co.edu.icesi.mio.logic;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 
@@ -15,14 +18,76 @@ public class ConductoresLogic implements IConductoresLogic {
 
 	@Override
 	public void create(EntityManager entity, Tmio1Conductore driver) {
-		// TODO Auto-generated method stub
+		String id = driver.getCedula();
+		String name = driver.getNombre();
+		String lastName = driver.getApellidos();
+		Date birthdayDate = driver.getFechaNacimiento();
+		Date hiringDate = driver.getFechaContratacion();
 		
+		boolean vId = validateId(id);
+		boolean vName = validateName(name);
+		boolean vLastName = validateLastName(lastName);
+		boolean vBirthdayDate= validateBirthdayDate(birthdayDate);
+		boolean vHiringDate = validationHiringDate(hiringDate);
+		
+		if (vId) {
+			if (vName) {
+				if (vLastName) {
+					if (vBirthdayDate) {
+						if (vHiringDate) {
+							EntityTransaction ent = entity.getTransaction();
+							ent.begin();
+							DAO.save(entity, driver);
+							ent.commit();
+							
+							System.out.println("El conductor con ID: " + id + " , fue registrado ");
+						}
+						else System.out.println("La fecha de contratación debe definirse y ser menor a la fecha actual");
+					}
+					else System.out.println("Es necesario definir la fecha de nacimiento, además de que sea mayor de edad");
+				}
+				else System.out.println("Por favor defina un apellido válido, tal que contenga 3 carácteres o más");
+			}
+			else System.out.println("Por favor defina un nombre válido, tal que contenga 3 carácteres o más");
+		}
+		else System.out.println("Por favor introduzca un número de cédula, compuesto por números");
 	}
 	
 	@Override
 	public void update(EntityManager entity, Tmio1Conductore driver) {
-		// TODO Auto-generated method stub
+		String id = driver.getCedula();
+		String name = driver.getNombre();
+		String lastName = driver.getApellidos();
+		Date birthdayDate = driver.getFechaNacimiento();
+		Date hiringDate = driver.getFechaContratacion();
 		
+		boolean vId = validateId(id);
+		boolean vName = validateName(name);
+		boolean vLastName = validateLastName(lastName);
+		boolean vBirthdayDate= validateBirthdayDate(birthdayDate);
+		boolean vHiringDate = validationHiringDate(hiringDate);
+		
+		if (vId) {
+			if (vName) {
+				if (vLastName) {
+					if (vBirthdayDate) {
+						if (vHiringDate) {
+							EntityTransaction ent = entity.getTransaction();
+							ent.begin();
+							DAO.update(entity, driver);
+							ent.commit();
+							
+							System.out.println("El conductor con ID: " + id + " , fue actualizado ");
+						}
+						else System.out.println("La fecha de contratación debe definirse y ser menor a la fecha actual");
+					}
+					else System.out.println("Es necesario definir la fecha de nacimiento, además de que sea mayor de edad");
+				}
+				else System.out.println("Por favor defina un apellido válido, tal que contenga 3 carácteres o más");
+			}
+			else System.out.println("Por favor defina un nombre válido, tal que contenga 3 carácteres o más");
+		}
+		else System.out.println("Por favor introduzca un número de cédula, compuesto por números");
 	}
 	
 	@Override
@@ -87,8 +152,19 @@ public class ConductoresLogic implements IConductoresLogic {
 	
 	private boolean validateBirthdayDate(Date birthdayDate) {
 		if(birthdayDate!=null) {
-			//NO TERMINADOOOOOOOOOOOOOOOOOOOOOOO
-			return null;
+			LocalDate dateBirth = birthdayDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			LocalDate now = LocalDate.now();
+			long years = ChronoUnit.YEARS.between(dateBirth, now);
+			if (years>=18) return true;
+			else return false;
 		}
+		else return false;
+	}
+	
+	private boolean validationHiringDate(Date hiringDate) {
+		if(hiringDate!=null&&(hiringDate.compareTo(new Date()))< 0) return true;
+		else return false;
+	
 	}
 }
+

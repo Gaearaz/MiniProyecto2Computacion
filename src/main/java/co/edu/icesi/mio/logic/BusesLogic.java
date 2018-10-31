@@ -53,11 +53,36 @@ public class BusesLogic implements IBusesLogic {
 // Validations stage
 
 	private boolean validatePlate(String plate) {
-		if(!plate.equals(null)&&plate.length()==6) {
-			
-		}
+		if(!plate.equals(null)&&plate.length()==6) return true;
+		else return false;
 	}
 	
+	private boolean validateMarca(String marca) {
+		if(!marca.equals(null)&&!(marca.length()<3)) return true;
+		else return false;
+	}
 	
+	private boolean validateModel(BigDecimal model) {
+		if(model!=null) {
+			int n1 = model.stripTrailingZeros().precision();
+			int n2 = model.stripTrailingZeros().scale();
+			
+			int n = n1-n2;
+			String r = n+"";
+		if (r.length()==4) 	return true;}
+		return false;
+	}
+	
+	private boolean validateType(String type) {
+		if(type.equals("P") || type.equals("A") || type.equals("T")) 
+			return true;
+		
+		else return false;
+	}
+	
+	private boolean validateCapacity(BigDecimal capacity) {
+		if(capacity.compareTo(BigDecimal.ZERO) > 0)	return true;
+		return false;
+	}
 
 }
