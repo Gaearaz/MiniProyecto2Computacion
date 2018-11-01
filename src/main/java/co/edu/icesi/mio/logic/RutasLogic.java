@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 
 import co.edu.icesi.mio.dao.ITmio1_Rutas_DAO;
 import co.edu.icesi.mio.model.Tmio1Ruta;
@@ -22,27 +23,119 @@ public class RutasLogic implements IRutasLogic {
 		BigDecimal finalTime= route.getHoraFin();
 		String active = route.getActiva();
 		
+		boolean valrou = validateRouteNumber(routeNumber);
+		boolean valstDay= validateDay(startDay);
+		boolean valFiDay= validateDay(finalDay);
+		boolean valstartTime = validateStartTime(startTime);
+		boolean valfinalTime = validateEndTime(finalTime);
+		boolean valActive = validateActive(active);
 		
-		
+		if (valrou) {
+			if (valstDay) {
+				if (valFiDay) {
+					if (startDay.compareTo(finalDay)<=0) {
+					if (valstartTime) {
+						if (valfinalTime) {
+							if (startTime.compareTo(finalTime)<=0) {								
+							if (valfinalTime) {
+								if (valActive) {
+									
+									EntityTransaction entity1 = entity.getTransaction();
+									entity1.begin();
+									DAO.save(entity, route);
+									entity1.commit();
+									
+									System.out.println("La ruta número:"+routeNumber+"fue agregada.");
+										}
+								else System.out.println("El valor de activo sólo puede ser S o N");
+									}
+							else System.out.println("La hora de inicio debe ser menor o igual a la hora fin.");
+								}
+							else System.out.println("La hora fin debe estar entre 1 y 1440");
+							}
+						else System.out.println("La hora de inicio debe estar entre 1 y 1440");
+						}
+					else System.out.println("El dia inicio debe ser menor o igual al día fin");
+					}
+					else System.out.println("El día fin debe ser un número entre 1 y 7");
+				}
+				else System.out.println("El día de inicio debe ser un número entre 1 y 7");
+			}
+			else System.out.println("El número de ruta debe ser de 3 carácteres");
+		}
 	}
 	
 	@Override
 	public void update(EntityManager entity, Tmio1Ruta route) {
-		// TODO Auto-generated method stub
+		String routeNumber= route.getNumero();
+		BigDecimal startDay=route.getDiaInicio();
+		BigDecimal finalDay=route.getDiaFin();
+		BigDecimal startTime=route.getHoraInicio();
+		BigDecimal finalTime= route.getHoraFin();
+		String active = route.getActiva();
 		
-	}
+		boolean valrou = validateRouteNumber(routeNumber);
+		boolean valstDay= validateDay(startDay);
+		boolean valFiDay= validateDay(finalDay);
+		boolean valstartTime = validateStartTime(startTime);
+		boolean valfinalTime = validateEndTime(finalTime);
+		boolean valActive = validateActive(active);
+		
+		if (valrou) {
+			if (valstDay) {
+				if (valFiDay) {
+					if (startDay.compareTo(finalDay)<=0) {
+					if (valstartTime) {
+						if (valfinalTime) {
+							if (startTime.compareTo(finalTime)<=0) {								
+							if (valfinalTime) {
+								if (valActive) {
+									
+									EntityTransaction ent = entity.getTransaction();
+									ent.begin();
+									DAO.update(entity, route);
+									ent.commit();
+									
+									System.out.println("La ruta número:"+routeNumber+"fue agregada.");
+										}
+								else System.out.println("El valor de activo sólo puede ser S o N");
+									}
+							else System.out.println("La hora de inicio debe ser menor o igual a la hora fin.");
+								}
+							else System.out.println("La hora fin debe estar entre 1 y 1440");
+							}
+						else System.out.println("La hora de inicio debe estar entre 1 y 1440");
+						}
+					else System.out.println("El dia inicio debe ser menor o igual al día fin");
+					}
+					else System.out.println("El día fin debe ser un número entre 1 y 7");
+				}
+				else System.out.println("El día de inicio debe ser un número entre 1 y 7");
+			}
+			else System.out.println("El número de ruta debe ser de 3 carácteres");
+		}
+	}		
 	
 	@Override
 	public void remove(EntityManager entity, Tmio1Ruta route) {
-		// TODO Auto-generated method stub
-		
+		EntityTransaction ent = entity.getTransaction();
+		ent.begin();
+		DAO.delete(entity, route);
+		ent.commit();		
 	}
 
 
-	public List<Tmio1Ruta> findByDayRange() {
-		return null;
+	public List<Tmio1Ruta> findByDayRange(EntityManager entity, BigDecimal startDate, BigDecimal finalDate) {
+		return DAO.findByRangeOfDays(entity, startDate,finalDate);
 	}
 
+	public List<Tmio1Ruta> findAll(EntityManager entity) {
+		return DAO.findAll(entity);
+	}
+
+	public Tmio1Ruta findById(EntityManager entity, Integer id) {
+		return DAO.findById(entity, id);
+	}
 
 	//Validation's Stage
 	
@@ -52,7 +145,29 @@ public class RutasLogic implements IRutasLogic {
 	}
 	
 	private boolean validateDay(BigDecimal day) {
+		if(day.compareTo(new BigDecimal(1))>=0 && day.compareTo(new BigDecimal(7))>=0) 
+		return true;
 		
+		else return false;
 	}
 	
+	private boolean validateStartTime(BigDecimal time) {
+		if (time.compareTo(new BigDecimal(1))>=0&&time.compareTo(new BigDecimal(1440))<=0) {
+			return true;
+		}
+		else return false;
+	}
+	
+	private boolean validateEndTime(BigDecimal time) {
+		if (time.compareTo(new BigDecimal(1))>=0&&time.compareTo(new BigDecimal(1440))<=0) {
+			return true;
+		}
+		else return false;
+	}
+	
+	private boolean validateActive(String active) {
+		if (active.equals("S") || active.equals("N")) 
+			return true;
+		else return false;
+	}
 }
