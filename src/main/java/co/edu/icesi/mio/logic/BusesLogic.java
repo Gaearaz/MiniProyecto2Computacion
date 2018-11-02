@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.edu.icesi.mio.dao.Tmio1_Buses_DAO;
@@ -14,13 +15,14 @@ import co.edu.icesi.mio.model.Tmio1Bus;
 @Service
 public class BusesLogic implements IBusesLogic {
 
+	@Autowired
 	private Tmio1_Buses_DAO DAO;
 
 	@Override
 	public void save(Tmio1Bus bus) {
 		DAO.save(bus);
 	}
-	
+
 	@Override
 	public void create(Tmio1Bus bus) {
 //		EntityTransaction ent = entity.getTransaction();

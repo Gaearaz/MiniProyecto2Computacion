@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.edu.icesi.mio.dao.ITmio1_Conductores_DAO;
@@ -17,6 +18,7 @@ import co.edu.icesi.mio.model.Tmio1Conductore;
 @Service
 public class ConductoresLogic implements IConductoresLogic {
 
+	@Autowired
 	private ITmio1_Conductores_DAO DAO;
 
 	@Override

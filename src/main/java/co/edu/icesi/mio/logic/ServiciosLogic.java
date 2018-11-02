@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.edu.icesi.mio.dao.Tmio1_Servicios_DAO;
@@ -18,6 +19,7 @@ import co.edu.icesi.mio.model.Tmio1ServicioPK;
 @Service
 public class ServiciosLogic implements IServiciosLogic {
 
+	@Autowired
 	private Tmio1_Servicios_DAO DAO;
 
 	@Override

@@ -5,20 +5,19 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
-
 /**
  * The persistent class for the tmio1_buses database table.
  * 
  */
 @Entity
-@Table(name="tmio1_buses")
-@NamedQuery(name="Tmio1Bus.findAll", query="SELECT t FROM Tmio1Bus t")
+@Table(name = "tmio1_buses")
+@NamedQuery(name = "Tmio1Bus.findAll", query = "SELECT t FROM Tmio1Bus t")
 public class Tmio1Bus implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="TMIO1_BUSES_ID_GENERATOR", sequenceName="SEC_TMIO1_BUSES")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TMIO1_BUSES_ID_GENERATOR")
+	@SequenceGenerator(name = "TMIO1_BUSES_ID_GENERATOR", sequenceName = "SEC_TMIO1_BUSES")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TMIO1_BUSES_ID_GENERATOR")
 	private Integer id;
 
 	private BigDecimal capacidad;
@@ -31,12 +30,12 @@ public class Tmio1Bus implements Serializable {
 
 	private String tipo;
 
-	//bi-directional many-to-one association to Tmio1Servicio
-	@OneToMany(mappedBy="tmio1Bus")
+	// bi-directional many-to-one association to Tmio1Servicio
+	@OneToMany(mappedBy = "tmio1Bus")
 	private List<Tmio1Servicio> tmio1Servicios;
 
-	//bi-directional many-to-one association to Tmio1ServiciosSitio
-	@OneToMany(mappedBy="tmio1Bus")
+	// bi-directional many-to-one association to Tmio1ServiciosSitio
+	@OneToMany(mappedBy = "tmio1Bus")
 	private List<Tmio1ServiciosSitio> tmio1ServiciosSitios;
 
 	public Tmio1Bus() {
