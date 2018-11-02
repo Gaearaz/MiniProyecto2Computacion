@@ -3,50 +3,42 @@ package co.edu.icesi.mio.test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
-import co.edu.icesi.mio.dao.ITmio1_Buses_DAO;
 import co.edu.icesi.mio.dao.ITmio1_Conductores_DAO;
 import co.edu.icesi.mio.dao.Tmio1_Buses_DAO;
 import co.edu.icesi.mio.dao.Tmio1_Conductores_DAO;
 import co.edu.icesi.mio.dao.Tmio1_Rutas_DAO;
 import co.edu.icesi.mio.dao.Tmio1_Servicios_DAO;
-import co.edu.icesi.mio.model.Tmio1Bus;
 import co.edu.icesi.mio.model.Tmio1Conductore;
-import co.edu.icesi.mio.model.Tmio1Ruta;
 import co.edu.icesi.mio.model.Tmio1Servicio;
 import co.edu.icesi.mio.model.Tmio1ServicioPK;
 import co.edu.icesi.mio.model.Tmio1ServiciosSitio;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
+@Rollback(false)
 public class Test_Tmio1_Conductore_DAO {
 
-	@PersistenceContext
-	private EntityManager em;
-
 	@Autowired
-	private Tmio1_Conductores_DAO conductorDAO;
+	private ITmio1_Conductores_DAO conductorDAO;
 
 	@Test
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void saveTest() {
-		em.getTransaction().begin();
+		assertNotNull("Dao null", conductorDAO);
 		Tmio1Conductore tmioConductor = new Tmio1Conductore();
 		tmioConductor.setCedula("12345");
 		tmioConductor.setNombre("Jack");
@@ -69,39 +61,34 @@ public class Test_Tmio1_Conductore_DAO {
 		tmioConductor1.setTmio1Servicios(new ArrayList<Tmio1Servicio>());
 		tmioConductor1.setTmio1ServiciosSitios(new ArrayList<Tmio1ServiciosSitio>());
 
-		conductorDAO.save( tmioConductor);
-		conductorDAO.save( tmioConductor1);
-		em.getTransaction().commit();
+		conductorDAO.save(tmioConductor);
+		conductorDAO.save(tmioConductor1);
 	}
 
 	@Test
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testUpdate() {
-		em.getTransaction().begin();
-		Tmio1Conductore conductor = conductorDAO.findByCedula( "12345");
+		Tmio1Conductore conductor = conductorDAO.findByCedula("12345");
 		assertNotNull("Code not found", conductor);
 		conductor.setNombre("Jack Jack");
-		conductorDAO.update( conductor);
-		em.getTransaction().commit();
+		conductorDAO.update(conductor);
 	}
 
 	@Test
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testFindByName() {
-		em.getTransaction().begin();
-		Tmio1Conductore conductor = conductorDAO.findByName( "Jack Jack").get(0);
-		em.getTransaction().commit();
+		Tmio1Conductore conductor = conductorDAO.findByName("Jack").get(0);
 		assertNotNull("No se encontro el conductor por ese nombre", conductor);
 	}
 
 	@Test
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testFindByLastName() {
-		em.getTransaction().begin();
-		Tmio1Conductore conductor = conductorDAO.findByLastName( "Melo").get(0);
-		em.getTransaction().commit();
+		Tmio1Conductore conductor = conductorDAO.findByLastName("Melo").get(0);
 		assertNotNull("No se encontro el conductor por ese apellido", conductor);
 	}
 
 	private void setUpEscenario1() {
-		em.getTransaction().begin();
 		Tmio1Conductore tmioConductor = new Tmio1Conductore();
 		tmioConductor.setCedula("12346");
 		tmioConductor.setNombre("Samantha");
@@ -113,10 +100,8 @@ public class Test_Tmio1_Conductore_DAO {
 		tmioConductor.setTmio1Servicios(new ArrayList<Tmio1Servicio>());
 		tmioConductor.setTmio1ServiciosSitios(new ArrayList<Tmio1ServiciosSitio>());
 
-		conductorDAO.save( tmioConductor);
-		em.getTransaction().commit();
+		conductorDAO.save(tmioConductor);
 
-		em.getTransaction().begin();
 		Tmio1Conductore tmioConductor1 = new Tmio1Conductore();
 		tmioConductor1.setCedula("12347");
 		tmioConductor1.setNombre("Diego");
@@ -128,12 +113,10 @@ public class Test_Tmio1_Conductore_DAO {
 		tmioConductor1.setTmio1Servicios(new ArrayList<Tmio1Servicio>());
 		tmioConductor1.setTmio1ServiciosSitios(new ArrayList<Tmio1ServiciosSitio>());
 
-		conductorDAO.save( tmioConductor1);
-		em.getTransaction().commit();
+		conductorDAO.save(tmioConductor1);
 	}
 
 	private void setUpEscenario2() {
-		em.getTransaction().begin();
 		Tmio1Conductore tmioConductor = new Tmio1Conductore();
 		tmioConductor.setCedula("12348");
 		tmioConductor.setNombre("Johnatan");
@@ -144,10 +127,8 @@ public class Test_Tmio1_Conductore_DAO {
 		tmioConductor.setFechaNacimiento(d1.getTime());
 		tmioConductor.setTmio1Servicios(new ArrayList<Tmio1Servicio>());
 		tmioConductor.setTmio1ServiciosSitios(new ArrayList<Tmio1ServiciosSitio>());
-		conductorDAO.save( tmioConductor);
-		em.getTransaction().commit();
+		conductorDAO.save(tmioConductor);
 
-		em.getTransaction().begin();
 		Tmio1_Servicios_DAO servicioDAO = new Tmio1_Servicios_DAO();
 		Tmio1ServicioPK s1PK = new Tmio1ServicioPK();
 		s1PK.setCedulaConductor("12348");
@@ -161,11 +142,11 @@ public class Test_Tmio1_Conductore_DAO {
 		Tmio1Servicio s1 = new Tmio1Servicio();
 		s1.setId(s1PK);
 		Tmio1_Buses_DAO busDAO = new Tmio1_Buses_DAO();
-		s1.setTmio1Bus(busDAO.findById( -20));
+		s1.setTmio1Bus(busDAO.findById(-20));
 		Tmio1_Conductores_DAO conductorDAO = new Tmio1_Conductores_DAO();
-		s1.setTmio1Conductore(conductorDAO.findByCedula( "12348"));
+		s1.setTmio1Conductore(conductorDAO.findByCedula("12348"));
 		Tmio1_Rutas_DAO rutasDAO = new Tmio1_Rutas_DAO();
-		s1.setTmio1Ruta(rutasDAO.findById( -41));
+		s1.setTmio1Ruta(rutasDAO.findById(-41));
 
 		Tmio1ServicioPK s2PK = new Tmio1ServicioPK();
 		s2PK.setCedulaConductor("12348");
@@ -179,24 +160,21 @@ public class Test_Tmio1_Conductore_DAO {
 		Tmio1Servicio s2 = new Tmio1Servicio();
 		s2.setId(s2PK);
 		// Tmio1_Buses_DAO bus= new Tmio1_Buses_DAO();
-		s2.setTmio1Bus(busDAO.findById( -19));
-		s2.setTmio1Conductore(conductorDAO.findByCedula( "12348"));
+		s2.setTmio1Bus(busDAO.findById(-19));
+		s2.setTmio1Conductore(conductorDAO.findByCedula("12348"));
 		// Tmio1_Rutas_DAO rutas2= new Tmio1_Rutas_DAO();
-		s2.setTmio1Ruta(rutasDAO.findById( -36));
+		s2.setTmio1Ruta(rutasDAO.findById(-36));
 
-		servicioDAO.save( s1);
-		servicioDAO.save( s2);
-		em.getTransaction().commit();
-
+		servicioDAO.save(s1);
+		servicioDAO.save(s2);
 	}
 
 	@Test
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testFindALlOrderedByBirthDate() {
 
 		setUpEscenario1();
-		em.getTransaction().begin();
 		List<Tmio1Conductore> conductores = conductorDAO.findAllOrderedByBirthDate();
-		em.getTransaction().commit();
 		assertNotNull(conductores);
 		// ASI se deja despues de eliminar a 12347 y cuando 12348 ya esta agregado
 		assertEquals("12346", conductores.get(0).getCedula());
@@ -208,33 +186,29 @@ public class Test_Tmio1_Conductore_DAO {
 	}
 
 	@Test
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testDriversServicesInMoreThanOneBus() {
 
 		setUpEscenario2();
-		em.getTransaction().begin();
 		List<Tmio1Conductore> conductores = conductorDAO.driversWithServicesInMoreThanOneBus();
-		em.getTransaction().commit();
-		assertNotNull("No existen conductores con servicios en m�s de 1 bus", conductores);
+		assertNotNull("No existen conductores con servicios en mas de 1 bus", conductores);
 		assertEquals("12348", conductores.get(0).getCedula());
 	}
 
 	@Test
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testDriversThatAreFree() {
-		em.getTransaction().begin();
 		List<Tmio1Conductore> conductores = conductorDAO.driversThatAreFree();
-		em.getTransaction().commit();
 		assertNotNull("No existen conductores libres", conductores);
 		// Es 4 antes del delete siguiente, es 3 despues del delete
 		assertEquals(3, conductores.size());
 	}
 
 	@Test
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testDelete() {
-		em.getTransaction().begin();
-		Tmio1Conductore conductor = conductorDAO.findByCedula( "12347");
+		Tmio1Conductore conductor = conductorDAO.findByCedula("12347");
 		assertNotNull("El conductor NO existe", conductor);
-		conductorDAO.delete( conductor);
-		em.getTransaction().commit();
-
+		conductorDAO.delete(conductor);
 	}
 }
