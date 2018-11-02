@@ -17,6 +17,11 @@ public class BusesLogic implements IBusesLogic {
 	private Tmio1_Buses_DAO DAO;
 
 	@Override
+	public void save(Tmio1Bus bus) {
+		DAO.save(bus);
+	}
+	
+	@Override
 	public void create(Tmio1Bus bus) {
 //		EntityTransaction ent = entity.getTransaction();
 //		ent.begin();
