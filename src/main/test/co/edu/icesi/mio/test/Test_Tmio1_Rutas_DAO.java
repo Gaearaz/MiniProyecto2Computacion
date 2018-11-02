@@ -5,12 +5,9 @@ import static org.junit.Assert.assertNotNull;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 
 import org.junit.Test;
@@ -18,11 +15,10 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
-import co.edu.icesi.mio.dao.Tmio1_Buses_DAO;
-import co.edu.icesi.mio.dao.Tmio1_Conductores_DAO;
-import co.edu.icesi.mio.dao.Tmio1_Rutas_DAO;
-import co.edu.icesi.mio.model.Tmio1Conductore;
+import co.edu.icesi.mio.dao.ITmio1_Rutas_DAO;
 import co.edu.icesi.mio.model.Tmio1Ruta;
 import co.edu.icesi.mio.model.Tmio1Servicio;
 import co.edu.icesi.mio.model.Tmio1ServiciosSitio;
@@ -32,16 +28,15 @@ import co.edu.icesi.mio.model.Tmio1SitiosRuta;
 @ContextConfiguration("/applicationContext.xml")
 public class Test_Tmio1_Rutas_DAO {
 
-	@PersistenceContext
-	private EntityManager em;
+//	@PersistenceContext
+//	private EntityManager em;
 
 	@Autowired
-	private Tmio1_Rutas_DAO rutasDAO;
+	private ITmio1_Rutas_DAO rutasDAO;
 
 	@Test
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void saveTest() {
-		em.getTransaction().begin();
-		rutasDAO = new Tmio1_Rutas_DAO();
 
 		Tmio1Ruta ruta = new Tmio1Ruta();
 		ruta.setActiva("A");
@@ -56,24 +51,19 @@ public class Test_Tmio1_Rutas_DAO {
 		ruta.setTmio1SitiosRutas1(new ArrayList<Tmio1SitiosRuta>());
 
 		rutasDAO.save(ruta);
-		em.getTransaction().commit();
 	}
 
 	@Test
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testUpdate() {
 
-		em.getTransaction().begin();
-		rutasDAO = new Tmio1_Rutas_DAO();
 		Tmio1Ruta ruta = rutasDAO.findById(-46);
 		assertNotNull("Code not found", ruta);
 		ruta.setDiaFin(new BigDecimal(5));
 		rutasDAO.update(ruta);
-		em.getTransaction().commit();
 	}
 
 	private void setUpEscenario1() {
-		rutasDAO = new Tmio1_Rutas_DAO();
-		em.getTransaction().begin();
 
 		Tmio1Ruta ruta = new Tmio1Ruta();
 		ruta.setActiva("A");
@@ -88,9 +78,6 @@ public class Test_Tmio1_Rutas_DAO {
 		ruta.setTmio1SitiosRutas1(new ArrayList<Tmio1SitiosRuta>());
 
 		rutasDAO.save(ruta);
-		em.getTransaction().commit();
-
-		em.getTransaction().begin();
 
 		Tmio1Ruta ruta1 = new Tmio1Ruta();
 		ruta1.setActiva("A");
@@ -105,28 +92,23 @@ public class Test_Tmio1_Rutas_DAO {
 		ruta1.setTmio1SitiosRutas1(new ArrayList<Tmio1SitiosRuta>());
 
 		rutasDAO.save(ruta1);
-		em.getTransaction().commit();
 	}
 
 	@Test
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testFindByRangeOfDays() {
 		setUpEscenario1();
-		// rutasDAO = new Tmio1_Rutas_DAO();
-		em.getTransaction().begin();
 		List<Tmio1Ruta> rutas = rutasDAO.findByRangeOfDays(new BigDecimal(1), new BigDecimal(7));
-		em.getTransaction().commit();
 		assertNotNull("No existen rutas en este rango de dias", rutas);
 		assertEquals(6, rutas.size());
 	}
 
 	@Test
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testDelete() {
-		em.getTransaction().begin();
-		rutasDAO = new Tmio1_Rutas_DAO();
 		Tmio1Ruta ruta = rutasDAO.findById(-42);
 		assertNotNull("La ruta NO existe", ruta);
 		rutasDAO.delete(ruta);
-		em.getTransaction().commit();
 
 	}
 }
