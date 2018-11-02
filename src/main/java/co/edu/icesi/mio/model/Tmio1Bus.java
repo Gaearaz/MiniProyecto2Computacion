@@ -101,7 +101,6 @@ public class Tmio1Bus implements Serializable {
 	public Tmio1Servicio addTmio1Servicio(Tmio1Servicio tmio1Servicio) {
 		getTmio1Servicios().add(tmio1Servicio);
 		tmio1Servicio.setTmio1Bus(this);
-
 		return tmio1Servicio;
 	}
 

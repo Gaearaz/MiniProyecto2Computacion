@@ -113,7 +113,7 @@ public class Test_Tmio1_Buses_DAO {
 		bus.setTmio1ServiciosSitios(new ArrayList<Tmio1ServiciosSitio>());
 
 		busDAO.save(bus);
-		
+
 		List<Tmio1Bus> busList = busDAO.findByType("T");
 		assertNotNull("No se encontro el bus por ese tipo", busList);
 		assertEquals(1, busList.size());
