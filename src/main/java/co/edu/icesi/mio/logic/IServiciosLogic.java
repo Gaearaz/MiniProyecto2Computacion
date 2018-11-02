@@ -6,9 +6,9 @@ import co.edu.icesi.mio.model.Tmio1Servicio;
 
 public interface IServiciosLogic {
 
-	public void create(EntityManager entity, Tmio1Servicio service);
-	
-	public void update(EntityManager entity, Tmio1Servicio service);
-	
-	public void delete(EntityManager entity, Tmio1Servicio service);
+	public void create(Tmio1Servicio service);
+
+	public void update(Tmio1Servicio service);
+
+	public void delete(Tmio1Servicio service);
 }

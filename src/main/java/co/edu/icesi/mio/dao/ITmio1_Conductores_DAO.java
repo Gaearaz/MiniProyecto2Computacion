@@ -12,19 +12,26 @@ import co.edu.icesi.mio.model.Tmio1Conductore;
 @Repository
 @Scope("singleton")
 public interface ITmio1_Conductores_DAO {
-	
-	//normales
-	public void save(EntityManager em, Tmio1Conductore conductor);
-	public void update(EntityManager em, Tmio1Conductore conductor);
-	public void delete(EntityManager em, Tmio1Conductore conductor);
-	public List<Tmio1Conductore> findAll(EntityManager em);
-	
-	//adicionales
-	public List<Tmio1Conductore> findByName(EntityManager em, String name);
-	public List<Tmio1Conductore> findByLastName(EntityManager em, String lastname);
-	public Tmio1Conductore findByCedula(EntityManager em, String cedula);
-	
-	public List<Tmio1Conductore> findAllOrderedByBirthDate(EntityManager em);
-	public List<Tmio1Conductore> driversWithServicesInMoreThanOneBus(EntityManager em);
-	public List<Tmio1Conductore> driversThatAreFree(EntityManager em);
+
+	// normales
+	public void save(Tmio1Conductore conductor);
+
+	public void update(Tmio1Conductore conductor);
+
+	public void delete(Tmio1Conductore conductor);
+
+	public List<Tmio1Conductore> findAll();
+
+	// adicionales
+	public List<Tmio1Conductore> findByName(String name);
+
+	public List<Tmio1Conductore> findByLastName(String lastname);
+
+	public Tmio1Conductore findByCedula(String cedula);
+
+	public List<Tmio1Conductore> findAllOrderedByBirthDate();
+
+	public List<Tmio1Conductore> driversWithServicesInMoreThanOneBus();
+
+	public List<Tmio1Conductore> driversThatAreFree();
 }

@@ -47,7 +47,7 @@ public class Test_Tmio1_Buses_DAO {
 		bus.setTmio1Servicios(new ArrayList<Tmio1Servicio>());
 		bus.setTmio1ServiciosSitios(new ArrayList<Tmio1ServiciosSitio>());
 
-		busDAO.save(em, bus);
+		busDAO.save(bus);
 		em.getTransaction().commit();
 
 		Tmio1Bus bus1 = new Tmio1Bus();
@@ -61,7 +61,7 @@ public class Test_Tmio1_Buses_DAO {
 		bus1.setTmio1Servicios(new ArrayList<Tmio1Servicio>());
 		bus1.setTmio1ServiciosSitios(new ArrayList<Tmio1ServiciosSitio>());
 
-		busDAO.save(em, bus1);
+		busDAO.save(bus1);
 		em.getTransaction().commit();
 
 		em.getTransaction().begin();
@@ -75,7 +75,7 @@ public class Test_Tmio1_Buses_DAO {
 		bus2.setTmio1Servicios(new ArrayList<Tmio1Servicio>());
 		bus2.setTmio1ServiciosSitios(new ArrayList<Tmio1ServiciosSitio>());
 
-		busDAO.save(em, bus2);
+		busDAO.save(bus2);
 		em.getTransaction().commit();
 
 		Tmio1Bus bus3 = new Tmio1Bus();
@@ -89,7 +89,7 @@ public class Test_Tmio1_Buses_DAO {
 		bus3.setTmio1Servicios(new ArrayList<Tmio1Servicio>());
 		bus3.setTmio1ServiciosSitios(new ArrayList<Tmio1ServiciosSitio>());
 
-		busDAO.save(em, bus3);
+		busDAO.save(bus3);
 		em.getTransaction().commit();
 	}
 
@@ -98,10 +98,10 @@ public class Test_Tmio1_Buses_DAO {
 		em.getTransaction().begin();
 		busDAO = new Tmio1_Buses_DAO();
 
-		Tmio1Bus bus = busDAO.findById(em, -23);
+		Tmio1Bus bus = busDAO.findById(-23);
 		assertNotNull("Code not found", bus);
 		bus.setCapacidad(new BigDecimal(1500));
-		busDAO.update(em, bus);
+		busDAO.update(bus);
 		em.getTransaction().commit();
 	}
 
@@ -111,7 +111,7 @@ public class Test_Tmio1_Buses_DAO {
 
 		busDAO = new Tmio1_Buses_DAO();
 
-		List<Tmio1Bus> bus = busDAO.findByModel(em, new BigDecimal(2015));
+		List<Tmio1Bus> bus = busDAO.findByModel(new BigDecimal(2015));
 		em.getTransaction().commit();
 		assertNotNull("No se encontro el bus por ese modelo", bus);
 		assertEquals(2, bus.size());
@@ -122,7 +122,7 @@ public class Test_Tmio1_Buses_DAO {
 		em.getTransaction().begin();
 		busDAO = new Tmio1_Buses_DAO();
 
-		List<Tmio1Bus> bus = busDAO.findByType(em, "T");
+		List<Tmio1Bus> bus = busDAO.findByType("T");
 		em.getTransaction().commit();
 		assertNotNull("No se encontro el bus por ese tipo", bus);
 		assertEquals(1, bus.size());
@@ -133,7 +133,7 @@ public class Test_Tmio1_Buses_DAO {
 		em.getTransaction().begin();
 		busDAO = new Tmio1_Buses_DAO();
 
-		List<Tmio1Bus> bus = busDAO.findByCapacity(em, new BigDecimal(1500));
+		List<Tmio1Bus> bus = busDAO.findByCapacity(new BigDecimal(1500));
 		em.getTransaction().commit();
 		assertNotNull("No se encontro el bus por esa capacidad", bus);
 		assertEquals(1, bus.size());
@@ -145,11 +145,11 @@ public class Test_Tmio1_Buses_DAO {
 
 		busDAO = new Tmio1_Buses_DAO();
 
-		Tmio1Bus bus = busDAO.findById(em, -21);
+		Tmio1Bus bus = busDAO.findById(-21);
 		em.getTransaction().commit();
 		assertNotNull("El bus NO existe", bus);
 		em.getTransaction().begin();
-		busDAO.delete(em, bus);
+		busDAO.delete(bus);
 		em.getTransaction().commit();
 	}
 }

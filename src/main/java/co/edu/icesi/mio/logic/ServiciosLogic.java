@@ -7,54 +7,57 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+import org.springframework.stereotype.Service;
+
 import co.edu.icesi.mio.dao.Tmio1_Servicios_DAO;
 import co.edu.icesi.mio.model.Tmio1Bus;
 import co.edu.icesi.mio.model.Tmio1Conductore;
 import co.edu.icesi.mio.model.Tmio1Servicio;
 import co.edu.icesi.mio.model.Tmio1ServicioPK;
 
+@Service
 public class ServiciosLogic implements IServiciosLogic {
 
 	private Tmio1_Servicios_DAO DAO;
 
 	@Override
-	public void create(EntityManager entity, Tmio1Servicio service) {
-		EntityTransaction ent = entity.getTransaction();
-		ent.begin();
-		DAO.save(entity, service);
-		ent.commit();
+	public void create(Tmio1Servicio service) {
+//		EntityTransaction ent = entity.getTransaction();
+//		ent.begin();
+		DAO.save(service);
+//		ent.commit();
 	}
 
 	@Override
-	public void update(EntityManager entity, Tmio1Servicio service) {
-		EntityTransaction ent = entity.getTransaction();
-		ent.begin();
-		DAO.update(entity, service);
-		ent.commit();
+	public void update(Tmio1Servicio service) {
+//		EntityTransaction ent = entity.getTransaction();
+//		ent.begin();
+		DAO.update(service);
+//		ent.commit();
 	}
 
 	@Override
-	public void delete(EntityManager entity, Tmio1Servicio service) {
-		EntityTransaction ent = entity.getTransaction();
-		ent.begin();
-		DAO.delete(entity, service);
-		ent.commit();
+	public void delete(Tmio1Servicio service) {
+//		EntityTransaction ent = entity.getTransaction();
+//		ent.begin();
+		DAO.delete(service);
+//		ent.commit();
 	}
 
-	public List<Tmio1Servicio> findByRangeOfDays(EntityManager entity, Calendar initialDate, Calendar finalDate) {
-		return DAO.findByRangeOfDates(entity, initialDate, finalDate);
+	public List<Tmio1Servicio> findByRangeOfDays(Calendar initialDate, Calendar finalDate) {
+		return DAO.findByRangeOfDates(initialDate, finalDate);
 	}
 
-	public List<Tmio1Servicio> findAll(EntityManager entity) {
-		return DAO.findAll(entity);
+	public List<Tmio1Servicio> findAll() {
+		return DAO.findAll();
 	}
 
-	public Tmio1Servicio findById(EntityManager entity, Tmio1ServicioPK id) {
-		return DAO.findById(entity, id);
+	public Tmio1Servicio findById(Tmio1ServicioPK id) {
+		return DAO.findById(id);
 	}
 
-	public List<Tmio1Servicio> servicesSaturdaysAndSundaysOrJustSundays(EntityManager entity) {
-		return DAO.servicesSaturdaysAndSundaysOrJustSundays(entity);
+	public List<Tmio1Servicio> servicesSaturdaysAndSundaysOrJustSundays() {
+		return DAO.servicesSaturdaysAndSundaysOrJustSundays();
 	}
 
 	// Validations Stage

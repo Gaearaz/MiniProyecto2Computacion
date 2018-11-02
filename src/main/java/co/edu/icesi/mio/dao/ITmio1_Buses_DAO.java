@@ -9,15 +9,21 @@ import co.edu.icesi.mio.model.Tmio1Bus;
 
 public interface ITmio1_Buses_DAO {
 
-	//normales
-	public void save(EntityManager em, Tmio1Bus bus);
-	public void update(EntityManager em, Tmio1Bus bus);
-	public void delete(EntityManager em, Tmio1Bus bus);
-	public List<Tmio1Bus> findAll(EntityManager em);
-	public Tmio1Bus findById(EntityManager em, Integer id);
-			
-	//adicionales
-	public List<Tmio1Bus> findByModel(EntityManager em, BigDecimal model);
-	public List<Tmio1Bus> findByType(EntityManager em, String type);
-	public List<Tmio1Bus> findByCapacity(EntityManager em, BigDecimal capacity);
+	// normales
+	public void save(Tmio1Bus bus);
+
+	public void update(Tmio1Bus bus);
+
+	public void delete(Tmio1Bus bus);
+
+	public List<Tmio1Bus> findAll();
+
+	public Tmio1Bus findById(Integer id);
+
+	// adicionales
+	public List<Tmio1Bus> findByModel(BigDecimal model);
+
+	public List<Tmio1Bus> findByType(String type);
+
+	public List<Tmio1Bus> findByCapacity(BigDecimal capacity);
 }

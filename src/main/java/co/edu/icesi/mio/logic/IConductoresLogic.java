@@ -6,9 +6,9 @@ import co.edu.icesi.mio.model.Tmio1Conductore;
 
 public interface IConductoresLogic {
 
-	public void create(EntityManager entity,Tmio1Conductore driver);
+	public void create(Tmio1Conductore driver);
 	
-	public void update(EntityManager entity,Tmio1Conductore driver);
+	public void update(Tmio1Conductore driver);
 	
-	public void remove(EntityManager entity,Tmio1Conductore driver);
+	public void remove(Tmio1Conductore driver);
 }
