@@ -102,10 +102,21 @@ public class Test_Tmio1_Buses_DAO {
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testFindByType() {
+		Tmio1Bus bus = new Tmio1Bus();
 
-		List<Tmio1Bus> bus = busDAO.findByType("T");
-		assertNotNull("No se encontro el bus por ese tipo", bus);
-		assertEquals(1, bus.size());
+		bus.setCapacidad(new BigDecimal(1000));
+		bus.setMarca("Renault");
+		bus.setModelo(new BigDecimal(2015));
+		bus.setPlaca("KGZ 310");
+		bus.setTipo("T");
+		bus.setTmio1Servicios(new ArrayList<Tmio1Servicio>());
+		bus.setTmio1ServiciosSitios(new ArrayList<Tmio1ServiciosSitio>());
+
+		busDAO.save(bus);
+		
+		List<Tmio1Bus> busList = busDAO.findByType("T");
+		assertNotNull("No se encontro el bus por ese tipo", busList);
+		assertEquals(1, busList.size());
 	}
 
 	@Test
