@@ -44,7 +44,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 	}
 
 	@Test
-	public void nullSaveTest() throws LogicException {
+	public void nuloSaveTest() throws LogicException {
 		assertNotNull(conductores_logic);
 
 		try {
@@ -56,7 +56,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 	}
 
 	@Test
-	public void cedulaNullTest() {
+	public void cedulaNuloTest() {
 		assertNotNull(conductores_logic);
 		Tmio1Conductore tmioConductor = new Tmio1Conductore();
 //		tmioConductor.setCedula("12345");
@@ -96,7 +96,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 	}
 
 	@Test
-	public void nombreNullTest() {
+	public void nombreNuloTest() {
 		assertNotNull(conductores_logic);
 		Tmio1Conductore tmioConductor = new Tmio1Conductore();
 		tmioConductor.setCedula("12345");
@@ -116,7 +116,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 	}
 
 	@Test
-	public void tamanoNombreMenor3Test() {
+	public void nombreLongitudMenor3Test() {
 		assertNotNull(conductores_logic);
 		Tmio1Conductore tmioConductor = new Tmio1Conductore();
 		tmioConductor.setCedula("12345");
@@ -136,7 +136,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 	}
 
 	@Test
-	public void apellidosNullTest() {
+	public void apellidosNulosTest() {
 		assertNotNull(conductores_logic);
 		Tmio1Conductore tmioConductor = new Tmio1Conductore();
 		tmioConductor.setCedula("12345");
@@ -156,7 +156,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 	}
 
 	@Test
-	public void tamanoApellidosMenor3Test() {
+	public void apellidosLongitudMenor3Test() {
 		assertNotNull(conductores_logic);
 		Tmio1Conductore tmioConductor = new Tmio1Conductore();
 		tmioConductor.setCedula("12345");
