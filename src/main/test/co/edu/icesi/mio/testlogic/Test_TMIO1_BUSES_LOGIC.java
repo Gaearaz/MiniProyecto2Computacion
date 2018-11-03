@@ -37,7 +37,7 @@ public class Test_TMIO1_BUSES_LOGIC {
 	}
 
 	@Test
-	public void placaMayor6ElementosTest() throws LogicException {
+	public void placaIncorrectaTest() throws LogicException {
 		assertNotNull(buses_logica);
 		Tmio1Bus bus = new Tmio1Bus();
 		bus.setPlaca("KKL 4556");
