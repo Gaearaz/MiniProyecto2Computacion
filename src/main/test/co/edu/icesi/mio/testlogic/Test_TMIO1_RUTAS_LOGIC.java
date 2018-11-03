@@ -61,7 +61,7 @@ public class Test_TMIO1_RUTAS_LOGIC {
 			rutas_logic.save(ruta);
 			fail("guardado");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -145,7 +145,7 @@ public class Test_TMIO1_RUTAS_LOGIC {
 		try {
 			rutas_logic.save(ruta);
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -187,7 +187,7 @@ public class Test_TMIO1_RUTAS_LOGIC {
 			rutas_logic.save(ruta);
 		} catch (LogicException e) {
 			e.printStackTrace();
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -224,7 +224,7 @@ public class Test_TMIO1_RUTAS_LOGIC {
 		try {
 			rutas_logic.save(ruta);
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 

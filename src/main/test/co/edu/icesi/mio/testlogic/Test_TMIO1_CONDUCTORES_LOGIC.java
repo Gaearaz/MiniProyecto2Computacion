@@ -51,7 +51,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			conductores_logic.save(null);
 			fail("Se agrego");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -71,7 +71,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			conductores_logic.save(tmioConductor);
 			fail("Se agrego");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -91,7 +91,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			conductores_logic.save(tmioConductor);
 			fail("Se agrego");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -111,7 +111,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			conductores_logic.save(tmioConductor);
 			fail("Se agrego");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -131,7 +131,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			conductores_logic.save(tmioConductor);
 			fail("Se agrego");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -151,7 +151,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			conductores_logic.save(tmioConductor);
 			fail("Se agrego");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -171,7 +171,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			conductores_logic.save(tmioConductor);
 			fail("Se agrego");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -191,7 +191,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			conductores_logic.save(tmioConductor);
 			fail("Se agrego");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -211,7 +211,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			conductores_logic.save(tmioConductor);
 			fail("Se agrego");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -231,7 +231,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			conductores_logic.save(tmioConductor);
 			fail("Se agrego");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -251,7 +251,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			conductores_logic.save(tmioConductor);
 			fail("Se agrego");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -264,7 +264,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			conductores_logic.update(null);
 			fail("Se actualizo");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -278,7 +278,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			conductores_logic.update(tmioConductor);
 			fail("Se actualizo");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -293,7 +293,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			conductores_logic.update(tmioConductor);
 			fail("Se actualizo");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -308,7 +308,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			conductores_logic.update(tmioConductor);
 			fail("Se actualizo");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -323,7 +323,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			conductores_logic.update(tmioConductor);
 			fail("Se actualizo");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -338,7 +338,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			conductores_logic.update(tmioConductor);
 			fail("Se actualizo");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -363,7 +363,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			conductores_logic.update(tmioConductor);
 			fail("Se actualizo");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -378,7 +378,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			conductores_logic.update(tmioConductor);
 			fail("Se actualizo");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -402,7 +402,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			conductores_logic.update(tmioConductor);
 			fail("Se actualizo");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -416,7 +416,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			conductores_logic.update(tmioConductor);
 			fail("Se actualizo");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -439,7 +439,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			conductores_logic.update(tmioConductor);
 			fail("Se actualizo");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -453,7 +453,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			conductores_logic.update(tmioConductor);
 			fail("Se actualizo");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -477,7 +477,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			List<Tmio1Conductore> list = conductores_logic.findByName(null);
 			fail("Busco");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -491,7 +491,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			List<Tmio1Conductore> list = conductores_logic.findByName("lo");
 			fail("Busco");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -518,7 +518,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			List<Tmio1Conductore> list = conductores_logic.findByLastName(null);
 			fail("Busco");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -532,7 +532,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			List<Tmio1Conductore> list = conductores_logic.findByLastName("lo");
 			fail("Busco");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -557,7 +557,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			Tmio1Conductore tmioConductor = conductores_logic.findByCedula(null);
 			fail("Busco");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -569,7 +569,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			Tmio1Conductore tmioConductor = conductores_logic.findByCedula("A0014128");
 			fail("Busco");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -597,7 +597,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			conductores_logic.delete(null);
 			fail("Elimino");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 

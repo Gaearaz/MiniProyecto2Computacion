@@ -112,7 +112,7 @@ public class Test_TMIO1_SERVICIOS_LOGIC {
 			servicios_logic.save(null);
 			fail("guardado");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -176,7 +176,7 @@ public class Test_TMIO1_SERVICIOS_LOGIC {
 			servicios_logic.delete(servicio);
 			fail("guardado");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 
 		buses_logic.delete(bus);
@@ -244,7 +244,7 @@ public class Test_TMIO1_SERVICIOS_LOGIC {
 			servicios_logic.delete(servicio);
 			fail("guardado");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 
 		buses_logic.delete(bus);

@@ -50,7 +50,7 @@ public class Test_TMIO1_BUSES_LOGIC {
 			buses_logica.save(bus);
 			fail("se agrego");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -67,7 +67,7 @@ public class Test_TMIO1_BUSES_LOGIC {
 			buses_logica.save(bus);
 			fail("se agrego");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -85,7 +85,7 @@ public class Test_TMIO1_BUSES_LOGIC {
 			buses_logica.save(bus1);
 			fail("se agrego");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
@@ -102,7 +102,7 @@ public class Test_TMIO1_BUSES_LOGIC {
 			buses_logica.save(bus1);
 			fail("se agrego");
 		} catch (LogicException e) {
-			assertEquals("error", e.getMessage());
+			assertEquals("No funciono", e.getMessage());
 		}
 	}
 
