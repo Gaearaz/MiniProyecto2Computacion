@@ -72,7 +72,7 @@ public class Test_TMIO1_BUSES_LOGIC {
 	}
 
 	@Test
-	public void testTipoDiferente() throws LogicException {
+	public void testTipoIncorrecto() throws LogicException {
 		assertNotNull(buses_logica);
 		Tmio1Bus bus1 = new Tmio1Bus();
 		bus1.setCapacidad(new BigDecimal(1000));
