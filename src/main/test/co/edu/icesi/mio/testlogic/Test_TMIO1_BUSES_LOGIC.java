@@ -33,7 +33,7 @@ public class Test_TMIO1_BUSES_LOGIC {
 	/**
 	 * Test en el cual se crea un bus, con sus respectivos atributos y se hace test
 	 * del correcto funcionamiento del método Save en Buses Logic
-	 * @throws LogicException En caso de que buses_lógica sea NUll
+	 * @throws LogicException En caso de que buses_lógica sea NUll.
 	 */
 	@Test
 	public void agregadoCorrectoTest() throws LogicException {
