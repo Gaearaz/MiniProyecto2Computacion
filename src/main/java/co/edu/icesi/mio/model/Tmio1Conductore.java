@@ -5,39 +5,37 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-
 /**
  * The persistent class for the tmio1_conductores database table.
  * 
  */
 @Entity
-@Table(name="tmio1_conductores")
-@NamedQuery(name="Tmio1Conductore.findAll", query="SELECT t FROM Tmio1Conductore t")
+@Table(name = "tmio1_conductores")
+@NamedQuery(name = "Tmio1Conductore.findAll", query = "SELECT t FROM Tmio1Conductore t")
 public class Tmio1Conductore implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private String cedula;
-	//sfsdf
 
 	private String apellidos;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="fecha_contratacion")
+	@Column(name = "fecha_contratacion")
 	private Date fechaContratacion;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="fecha_nacimiento")
+	@Column(name = "fecha_nacimiento")
 	private Date fechaNacimiento;
 
 	private String nombre;
 
-	//bi-directional many-to-one association to Tmio1Servicio
-	@OneToMany(mappedBy="tmio1Conductore")
+	// bi-directional many-to-one association to Tmio1Servicio
+	@OneToMany(mappedBy = "tmio1Conductore")
 	private List<Tmio1Servicio> tmio1Servicios;
 
-	//bi-directional many-to-one association to Tmio1ServiciosSitio
-	@OneToMany(mappedBy="tmio1Conductore")
+	// bi-directional many-to-one association to Tmio1ServiciosSitio
+	@OneToMany(mappedBy = "tmio1Conductore")
 	private List<Tmio1ServiciosSitio> tmio1ServiciosSitios;
 
 	public Tmio1Conductore() {

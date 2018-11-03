@@ -2,8 +2,6 @@ package co.edu.icesi.mio.dao;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 

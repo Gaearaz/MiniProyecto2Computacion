@@ -5,55 +5,54 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
-
 /**
  * The persistent class for the tmio1_rutas database table.
  * 
  */
 @Entity
-@Table(name="tmio1_rutas")
-@NamedQuery(name="Tmio1Ruta.findAll", query="SELECT t FROM Tmio1Ruta t")
+@Table(name = "tmio1_rutas")
+@NamedQuery(name = "Tmio1Ruta.findAll", query = "SELECT t FROM Tmio1Ruta t")
 public class Tmio1Ruta implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="TMIO1_RUTAS_ID_GENERATOR", sequenceName="SEC_TMIO1_RUTAS")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TMIO1_RUTAS_ID_GENERATOR")
+	@SequenceGenerator(name = "TMIO1_RUTAS_ID_GENERATOR", sequenceName = "TMIO1_RUTAS_SEC")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TMIO1_RUTAS_ID_GENERATOR")
 	private Integer id;
 
 	private String activa;
 
 	private String descripcion;
 
-	@Column(name="dia_fin")
+	@Column(name = "dia_fin")
 	private BigDecimal diaFin;
 
-	@Column(name="dia_inicio")
+	@Column(name = "dia_inicio")
 	private BigDecimal diaInicio;
 
-	@Column(name="hora_fin")
+	@Column(name = "hora_fin")
 	private BigDecimal horaFin;
 
-	@Column(name="hora_inicio")
+	@Column(name = "hora_inicio")
 	private BigDecimal horaInicio;
 
 	private String numero;
 
-	//bi-directional many-to-one association to Tmio1Servicio
-	@OneToMany(mappedBy="tmio1Ruta")
+	// bi-directional many-to-one association to Tmio1Servicio
+	@OneToMany(mappedBy = "tmio1Ruta")
 	private List<Tmio1Servicio> tmio1Servicios;
 
-	//bi-directional many-to-one association to Tmio1ServiciosSitio
-	@OneToMany(mappedBy="tmio1Ruta")
+	// bi-directional many-to-one association to Tmio1ServiciosSitio
+	@OneToMany(mappedBy = "tmio1Ruta")
 	private List<Tmio1ServiciosSitio> tmio1ServiciosSitios;
 
-	//bi-directional many-to-one association to Tmio1SitiosRuta
-	@OneToMany(mappedBy="tmio1Ruta1")
+	// bi-directional many-to-one association to Tmio1SitiosRuta
+	@OneToMany(mappedBy = "tmio1Ruta1")
 	private List<Tmio1SitiosRuta> tmio1SitiosRutas1;
 
-	//bi-directional many-to-one association to Tmio1SitiosRuta
-	//@OneToMany(mappedBy="tmio1Ruta2")
-	//private List<Tmio1SitiosRuta> tmio1SitiosRutas2;
+	// bi-directional many-to-one association to Tmio1SitiosRuta
+	// @OneToMany(mappedBy="tmio1Ruta2")
+	// private List<Tmio1SitiosRuta> tmio1SitiosRutas2;
 
 	public Tmio1Ruta() {
 	}
@@ -188,26 +187,28 @@ public class Tmio1Ruta implements Serializable {
 		return tmio1SitiosRutas1;
 	}
 
-	//public List<Tmio1SitiosRuta> getTmio1SitiosRutas2() {
-		//return this.tmio1SitiosRutas2;
-	//}
+	// public List<Tmio1SitiosRuta> getTmio1SitiosRutas2() {
+	// return this.tmio1SitiosRutas2;
+	// }
 
-	//public void setTmio1SitiosRutas2(List<Tmio1SitiosRuta> tmio1SitiosRutas2) {
-		//this.tmio1SitiosRutas2 = tmio1SitiosRutas2;
-	//}
+	// public void setTmio1SitiosRutas2(List<Tmio1SitiosRuta> tmio1SitiosRutas2) {
+	// this.tmio1SitiosRutas2 = tmio1SitiosRutas2;
+	// }
 
-	//public Tmio1SitiosRuta addTmio1SitiosRutas2(Tmio1SitiosRuta tmio1SitiosRutas2) {
-		//getTmio1SitiosRutas2().add(tmio1SitiosRutas2);
-		//tmio1SitiosRutas2.setTmio1Ruta2(this);
+	// public Tmio1SitiosRuta addTmio1SitiosRutas2(Tmio1SitiosRuta
+	// tmio1SitiosRutas2) {
+	// getTmio1SitiosRutas2().add(tmio1SitiosRutas2);
+	// tmio1SitiosRutas2.setTmio1Ruta2(this);
 
-		//return tmio1SitiosRutas2;
-	//}
+	// return tmio1SitiosRutas2;
+	// }
 
-	//public Tmio1SitiosRuta removeTmio1SitiosRutas2(Tmio1SitiosRuta tmio1SitiosRutas2) {
-		//getTmio1SitiosRutas2().remove(tmio1SitiosRutas2);
-		//tmio1SitiosRutas2.setTmio1Ruta2(null);
+	// public Tmio1SitiosRuta removeTmio1SitiosRutas2(Tmio1SitiosRuta
+	// tmio1SitiosRutas2) {
+	// getTmio1SitiosRutas2().remove(tmio1SitiosRutas2);
+	// tmio1SitiosRutas2.setTmio1Ruta2(null);
 
-		//return tmio1SitiosRutas2;
-	//}
+	// return tmio1SitiosRutas2;
+	// }
 
 }

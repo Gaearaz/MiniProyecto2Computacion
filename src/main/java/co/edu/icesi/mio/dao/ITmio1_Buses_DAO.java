@@ -3,8 +3,6 @@ package co.edu.icesi.mio.dao;
 import java.math.BigDecimal;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-
 import co.edu.icesi.mio.model.Tmio1Bus;
 
 public interface ITmio1_Buses_DAO {

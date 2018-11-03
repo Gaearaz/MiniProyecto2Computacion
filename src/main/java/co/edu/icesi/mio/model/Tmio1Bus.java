@@ -16,7 +16,7 @@ public class Tmio1Bus implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name = "TMIO1_BUSES_ID_GENERATOR", sequenceName = "SEC_TMIO1_BUSES")
+	@SequenceGenerator(name = "TMIO1_BUSES_ID_GENERATOR", sequenceName = "TMIO1_BUSES_SEC")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TMIO1_BUSES_ID_GENERATOR")
 	private Integer id;
 
@@ -100,6 +100,7 @@ public class Tmio1Bus implements Serializable {
 	public Tmio1Servicio addTmio1Servicio(Tmio1Servicio tmio1Servicio) {
 		getTmio1Servicios().add(tmio1Servicio);
 		tmio1Servicio.setTmio1Bus(this);
+
 		return tmio1Servicio;
 	}
 

@@ -4,37 +4,36 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
 /**
  * The persistent class for the tmio1_sitios database table.
  * 
  */
 @Entity
-@Table(name="tmio1_sitios")
-@NamedQuery(name="Tmio1Sitio.findAll", query="SELECT t FROM Tmio1Sitio t")
+@Table(name = "tmio1_sitios")
+@NamedQuery(name = "Tmio1Sitio.findAll", query = "SELECT t FROM Tmio1Sitio t")
 public class Tmio1Sitio implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="TMIO1_SITIOS_ID_GENERATOR", sequenceName="SEC_TMIO1_SITIOS")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TMIO1_SITIOS_ID_GENERATOR")
+	@SequenceGenerator(name = "TMIO1_SITIOS_ID_GENERATOR", sequenceName = "TMIO1_SITIOS_SEC")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TMIO1_SITIOS_ID_GENERATOR")
 	private long id;
 
 	private String descripcion;
 
 	private String nombre;
 
-	//bi-directional many-to-one association to Tmio1ServiciosSitio
-	@OneToMany(mappedBy="tmio1Sitio")
+	// bi-directional many-to-one association to Tmio1ServiciosSitio
+	@OneToMany(mappedBy = "tmio1Sitio")
 	private List<Tmio1ServiciosSitio> tmio1ServiciosSitios;
 
-	//bi-directional many-to-one association to Tmio1SitiosRuta
-	@OneToMany(mappedBy="tmio1Sitio1")
+	// bi-directional many-to-one association to Tmio1SitiosRuta
+	@OneToMany(mappedBy = "tmio1Sitio1")
 	private List<Tmio1SitiosRuta> tmio1SitiosRutas1;
 
-	//bi-directional many-to-one association to Tmio1SitiosRuta
-	//@OneToMany(mappedBy="tmio1Sitio2")
-	//private List<Tmio1SitiosRuta> tmio1SitiosRutas2;
+	// bi-directional many-to-one association to Tmio1SitiosRuta
+	// @OneToMany(mappedBy="tmio1Sitio2")
+	// private List<Tmio1SitiosRuta> tmio1SitiosRutas2;
 
 	public Tmio1Sitio() {
 	}
@@ -107,26 +106,28 @@ public class Tmio1Sitio implements Serializable {
 		return tmio1SitiosRutas1;
 	}
 
-	//public List<Tmio1SitiosRuta> getTmio1SitiosRutas2() {
-		//return this.tmio1SitiosRutas2;
-	//}
+	// public List<Tmio1SitiosRuta> getTmio1SitiosRutas2() {
+	// return this.tmio1SitiosRutas2;
+	// }
 
-	//public void setTmio1SitiosRutas2(List<Tmio1SitiosRuta> tmio1SitiosRutas2) {
-		//this.tmio1SitiosRutas2 = tmio1SitiosRutas2;
-	//}
+	// public void setTmio1SitiosRutas2(List<Tmio1SitiosRuta> tmio1SitiosRutas2) {
+	// this.tmio1SitiosRutas2 = tmio1SitiosRutas2;
+	// }
 
-	//public Tmio1SitiosRuta addTmio1SitiosRutas2(Tmio1SitiosRuta tmio1SitiosRutas2) {
-		//getTmio1SitiosRutas2().add(tmio1SitiosRutas2);
-		//tmio1SitiosRutas2.setTmio1Sitio2(this);
+	// public Tmio1SitiosRuta addTmio1SitiosRutas2(Tmio1SitiosRuta
+	// tmio1SitiosRutas2) {
+	// getTmio1SitiosRutas2().add(tmio1SitiosRutas2);
+	// tmio1SitiosRutas2.setTmio1Sitio2(this);
 
-		//return tmio1SitiosRutas2;
-	//}
+	// return tmio1SitiosRutas2;
+	// }
 
-	//public Tmio1SitiosRuta removeTmio1SitiosRutas2(Tmio1SitiosRuta tmio1SitiosRutas2) {
-		//getTmio1SitiosRutas2().remove(tmio1SitiosRutas2);
-		//tmio1SitiosRutas2.setTmio1Sitio2(null);
+	// public Tmio1SitiosRuta removeTmio1SitiosRutas2(Tmio1SitiosRuta
+	// tmio1SitiosRutas2) {
+	// getTmio1SitiosRutas2().remove(tmio1SitiosRutas2);
+	// tmio1SitiosRutas2.setTmio1Sitio2(null);
 
-	//	return tmio1SitiosRutas2;
-	//}
+	// return tmio1SitiosRutas2;
+	// }
 
 }
