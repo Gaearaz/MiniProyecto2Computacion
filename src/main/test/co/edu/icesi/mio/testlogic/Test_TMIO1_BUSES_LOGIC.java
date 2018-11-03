@@ -27,10 +27,10 @@ public class Test_TMIO1_BUSES_LOGIC {
 	public void agregadoCorrectoTest() throws LogicException {
 		assertNotNull(buses_logica);
 		Tmio1Bus bus = new Tmio1Bus();
-		bus.setPlaca("SDF457");
-		bus.setCapacidad(new BigDecimal(1000));
-		bus.setMarca("Renault");
-		bus.setModelo(new BigDecimal(2015));
+		bus.setPlaca("KKL455");
+		bus.setCapacidad(new BigDecimal(50));
+		bus.setMarca("Mercedes");
+		bus.setModelo(new BigDecimal(2014));
 		bus.setTipo("T");
 
 		buses_logica.save(bus);
@@ -40,9 +40,9 @@ public class Test_TMIO1_BUSES_LOGIC {
 	public void placaMayor6ElementosTest() throws LogicException {
 		assertNotNull(buses_logica);
 		Tmio1Bus bus = new Tmio1Bus();
-		bus.setPlaca("SDF 4578");
-		bus.setCapacidad(new BigDecimal(1000));
-		bus.setMarca("Renault");
+		bus.setPlaca("KKL 4556");
+		bus.setCapacidad(new BigDecimal(50));
+		bus.setMarca("Mercedes");
 		bus.setModelo(new BigDecimal(2015));
 		bus.setTipo("T");
 
