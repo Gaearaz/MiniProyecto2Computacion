@@ -9,7 +9,7 @@ public interface ITmio1_Buses_DAO {
 
 	// normales
 	
-	
+	//xc
 	public void save(Tmio1Bus bus);
 
 	public void update(Tmio1Bus bus);

@@ -57,7 +57,7 @@ public class Test_TMIO1_BUSES_LOGIC {
 		bus.setMarca("Renault");
 		bus.setModelo(new BigDecimal(2015));
 		bus.setTipo("T");
-
+		boolean n; 
 		try {
 			buses_logica.save(bus);
 			fail("se agrego");
