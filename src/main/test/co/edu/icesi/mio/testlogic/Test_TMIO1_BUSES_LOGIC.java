@@ -14,7 +14,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import co.edu.icesi.mio.exceptions.LogicException;
 import co.edu.icesi.mio.logic.ITMIO1_BUSES_LOGIC;
 import co.edu.icesi.mio.model.Tmio1Bus;
-
 /**
  * 
  * @author Andres Zapata & Andres Borrero
@@ -33,7 +32,7 @@ public class Test_TMIO1_BUSES_LOGIC {
 	/**
 	 * Test en el cual se crea un bus, con sus respectivos atributos y se hace test
 	 * del correcto funcionamiento del método Save en Buses Logic
-	 * @throws LogicException En caso de que buses_lógica sea NUll.
+	 * @throws LogicException En caso de error en el save.
 	 */
 	@Test
 	public void agregadoCorrectoTest() throws LogicException {
@@ -48,6 +47,12 @@ public class Test_TMIO1_BUSES_LOGIC {
 		buses_logica.save(bus);
 	}
 
+	/**
+	 *Test en el que se valida la integridad del número de carácteres por placa (Max 6) 
+	 * @throws LogicException En el caso de que la placa lleve un número de carácteres
+	 * no permitido.
+	 */
+	
 	@Test
 	public void placaMayor6ElementosTest() throws LogicException {
 		assertNotNull(buses_logica);
@@ -66,6 +71,11 @@ public class Test_TMIO1_BUSES_LOGIC {
 		}
 	}
 
+	/**
+	 * Test en el que se valida el intento de agregar un bus para el cual no ha
+	 * sido definida su marca
+	 * @throws LogicException en caso de que no lleve marca debe mostrarse un error de guardado 
+	 */
 	@Test
 	public void marcaNullTest() throws LogicException {
 		assertNotNull(buses_logica);
@@ -83,6 +93,10 @@ public class Test_TMIO1_BUSES_LOGIC {
 		}
 	}
 
+	/**
+	 * Test en el que se valida el método Save de bus para un tipo no válido.
+	 * @throws LogicException si se hace Save de un bus con un tipo inválido.
+	 */
 	@Test
 	public void testTipoDiferente() throws LogicException {
 		assertNotNull(buses_logica);
@@ -101,6 +115,10 @@ public class Test_TMIO1_BUSES_LOGIC {
 		}
 	}
 
+	/**
+	 * Test en el que se valida el método Save para un bus cuya capacidad es NUll
+	 * @throws LogicException en caso de que se intente hacer Save de un bus con capacidad nula
+	 */
 	@Test
 	public void CapacidadNullTest() throws LogicException {
 		assertNotNull(buses_logica);

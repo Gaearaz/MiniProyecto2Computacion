@@ -27,6 +27,10 @@ public class Test_Tmio1_Buses_DAO {
 	@Autowired
 	private ITmio1_Buses_DAO busDAO;
 
+	/**
+	 * Test del método save donde se guardan 4 buses 
+	 * previamente creados con sus atributos completos
+	 */
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testSave() {
@@ -80,6 +84,10 @@ public class Test_Tmio1_Buses_DAO {
 		busDAO.save(bus3);
 	}
 
+	/**
+	 * Test del método save donde se valida que el bus que se actualizará 
+	 * se encuentre en la base de datos y luego se le actualiza uno de sus atributos(capacidad)
+	 */
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testUpdate() {
@@ -90,6 +98,10 @@ public class Test_Tmio1_Buses_DAO {
 		busDAO.update(bus);
 	}
 
+	/**
+	 * Test del método findByModel en el cual se prueba la validación de la búsqueda de un bus por su modelo
+	 * que es un atributo Bigdecimal, y luego se verifica si  el valor del size de los resultados es el esperado
+	 */
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testFindByModel() {
@@ -99,6 +111,11 @@ public class Test_Tmio1_Buses_DAO {
 		assertEquals(2, bus.size());
 	}
 
+	/**
+	 * Test del método findByType en el cual se prueba la validación de la búsqueda de un bus por su tipo
+	 * qye es un String de tamaño 1, y luego se verifica (en caso de ser encontrado) que el tamaño del size
+	 * de la lista de los resultados es el esperado. 
+	 */
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testFindByType() {
@@ -108,6 +125,11 @@ public class Test_Tmio1_Buses_DAO {
 		assertEquals(1, bus.size());
 	}
 
+	/**
+	 * Test del método findByCapacity en el cual se prueba la validación de la búsqueda en un bus por su
+	 * capacidad, que es un BigDecimal, luego se verifica (en caso de ser encontrado) que el tamaño del size
+	 * de la lista de los resultados sea el esperado.
+	 */
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testFindByCapacity() {
@@ -118,6 +140,10 @@ public class Test_Tmio1_Buses_DAO {
 		assertEquals(1, bus.size());
 	}
 
+	/**
+	 * Test del método Delete en el que se hace la búsqueda de un bus por medio de su Id y, luego de encontrado,
+	 * se procede a la realización del borrado del bus de la base de datos. 
+	 */
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testDelete() {
