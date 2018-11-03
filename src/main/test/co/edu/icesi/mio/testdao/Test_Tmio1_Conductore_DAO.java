@@ -159,10 +159,8 @@ public class Test_Tmio1_Conductore_DAO {
 
 		Tmio1Servicio s2 = new Tmio1Servicio();
 		s2.setId(s2PK);
-		// Tmio1_Buses_DAO bus= new Tmio1_Buses_DAO();
 		s2.setTmio1Bus(busDAO.findById(-19));
 		s2.setTmio1Conductore(conductorDAO.findByCedula("12348"));
-		// Tmio1_Rutas_DAO rutas2= new Tmio1_Rutas_DAO();
 		s2.setTmio1Ruta(rutasDAO.findById(-36));
 
 		servicioDAO.save(s1);

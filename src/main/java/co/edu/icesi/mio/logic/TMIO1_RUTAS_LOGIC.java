@@ -111,17 +111,4 @@ public class TMIO1_RUTAS_LOGIC implements ITMIO1_RUTAS_LOGIC {
 		return dao_rutas.findByRangeOfDays(diaInicio, diaFin);
 	}
 
-	/**
-	 * 
-	 * @param a
-	 * @param b
-	 * @return
-	 * @throws Exception
-	 */
-	public double metodo1(String a, String b) throws Exception {
-		if (a == null || b == null)
-			throw new Exception("Error");
-		return (a + b).length();
-	}
-
 }
