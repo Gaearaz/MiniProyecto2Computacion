@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import co.edu.icesi.mio.exceptions.LogicException;
 import co.edu.icesi.mio.logic.ITMIO1_RUTAS_LOGIC;
+
 import co.edu.icesi.mio.model.Tmio1Ruta;
 import co.edu.icesi.mio.model.Tmio1Servicio;
 import co.edu.icesi.mio.model.Tmio1ServiciosSitio;
@@ -28,7 +29,7 @@ public class Test_TMIO1_RUTAS_LOGIC {
 	private ITMIO1_RUTAS_LOGIC rutas_logic;
 
 	@Test
-	public void numeroTengaTresCaracteres() throws LogicException {
+	public void numeroTiene3Caracteres() throws LogicException {
 		Tmio1Ruta ruta = new Tmio1Ruta();
 		ruta.setActiva("S");
 		ruta.setDescripcion("ruta A a B");
@@ -45,7 +46,7 @@ public class Test_TMIO1_RUTAS_LOGIC {
 	}
 
 	@Test
-	public void numeroTengaMenosDeTresCaracteres() {
+	public void numeroTieneMenosDe3Caracteres() {
 		Tmio1Ruta ruta = new Tmio1Ruta();
 		ruta.setActiva("S");
 		ruta.setDescripcion("ruta A a B");
@@ -66,7 +67,7 @@ public class Test_TMIO1_RUTAS_LOGIC {
 	}
 
 	@Test
-	public void diaInicioDiaFinNumericos() {
+	public void fechaFormatoNumerico() {
 		Tmio1Ruta ruta1 = new Tmio1Ruta();
 		ruta1.setActiva("S");
 		ruta1.setDescripcion("ruta A a B");
@@ -87,7 +88,7 @@ public class Test_TMIO1_RUTAS_LOGIC {
 	}
 
 	@Test
-	public void diaInicioDiaFinNumericosEntreUnoySiete() {
+	public void fechaFormatoNumericoMenor7() {
 		Tmio1Ruta ruta1 = new Tmio1Ruta();
 		ruta1.setActiva("S");
 		ruta1.setDescripcion("ruta A a B");
@@ -108,7 +109,7 @@ public class Test_TMIO1_RUTAS_LOGIC {
 	}
 
 	@Test
-	public void inicioMenorOIgualAFin() {
+	public void inicioAntesOIgualAFin() {
 		Tmio1Ruta ruta = new Tmio1Ruta();
 		ruta.setActiva("S");
 		ruta.setDescripcion("ruta A a B");
@@ -130,7 +131,7 @@ public class Test_TMIO1_RUTAS_LOGIC {
 	}
 
 	@Test
-	public void inicioMayorAFin() {
+	public void inicioMayorFin() {
 		Tmio1Ruta ruta = new Tmio1Ruta();
 		ruta.setActiva("S");
 		ruta.setDescripcion("ruta A a B");
@@ -150,7 +151,7 @@ public class Test_TMIO1_RUTAS_LOGIC {
 	}
 
 	@Test
-	public void horaInicioYFinAgregadoCorrecto() {
+	public void horaInicioFinAgregadoCorrecto() {
 		Tmio1Ruta ruta = new Tmio1Ruta();
 		ruta.setActiva("S");
 		ruta.setDescripcion("ruta A a B");
@@ -171,7 +172,7 @@ public class Test_TMIO1_RUTAS_LOGIC {
 	}
 
 	@Test
-	public void horaInicioYFinFueradeRangos() {
+	public void horaInicioFinRangoInvalido() {
 		Tmio1Ruta ruta = new Tmio1Ruta();
 		ruta.setActiva("S");
 		ruta.setDescripcion("ruta A a B");
@@ -192,7 +193,7 @@ public class Test_TMIO1_RUTAS_LOGIC {
 	}
 
 	@Test
-	public void activaSoNCorrecta() throws LogicException {
+	public void estadoActivaCorrecto() throws LogicException {
 		Tmio1Ruta ruta = new Tmio1Ruta();
 		ruta.setActiva("S");
 		ruta.setDescripcion("ruta A a B");
@@ -209,7 +210,7 @@ public class Test_TMIO1_RUTAS_LOGIC {
 	}
 
 	@Test
-	public void activaSoNIncorrecta() {
+	public void estadoActivaIncorrecto() {
 		Tmio1Ruta ruta = new Tmio1Ruta();
 		ruta.setActiva("Z");
 		ruta.setDescripcion("ruta A a B");

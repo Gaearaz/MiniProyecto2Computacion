@@ -29,7 +29,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 
 	// Save Test
 	@Test
-	public void acorrectSaveTest() throws LogicException {
+	public void correctoSaveTest() throws LogicException {
 		assertNotNull(conductores_logic);
 		Tmio1Conductore tmioConductor = new Tmio1Conductore();
 		tmioConductor.setCedula("12345");
