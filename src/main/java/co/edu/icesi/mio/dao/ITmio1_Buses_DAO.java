@@ -8,6 +8,8 @@ import co.edu.icesi.mio.model.Tmio1Bus;
 public interface ITmio1_Buses_DAO {
 
 	// normales
+	
+	
 	public void save(Tmio1Bus bus);
 
 	public void update(Tmio1Bus bus);

@@ -1,5 +1,4 @@
 package co.edu.icesi.mio.testlogic;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
@@ -16,13 +15,26 @@ import co.edu.icesi.mio.exceptions.LogicException;
 import co.edu.icesi.mio.logic.ITMIO1_BUSES_LOGIC;
 import co.edu.icesi.mio.model.Tmio1Bus;
 
+/**
+ * 
+ * @author Andres Zapata & Andres Borrero
+ *  Clase correspondiente a los test de la lógica de los buses 
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
 public class Test_TMIO1_BUSES_LOGIC {
-
+	
+	/**
+	 * Atributo que representa la instancia del DAO de la lógica de los buses 
+	 */
 	@Autowired
 	private ITMIO1_BUSES_LOGIC buses_logica;
 
+	/**
+	 * Test en el cual se crea un bus, con sus respectivos atributos y se hace test
+	 * del correcto funcionamiento del método Save en Buses Logic
+	 * @throws LogicException En caso de que buses_lógica sea NUll
+	 */
 	@Test
 	public void agregadoCorrectoTest() throws LogicException {
 		assertNotNull(buses_logica);
