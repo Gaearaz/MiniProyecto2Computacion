@@ -589,6 +589,7 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 		conductores_logic.delete(tmioConductor);
 	}
 
+	
 	@Test
 	public void deleteNullTest() {
 		assertNotNull(conductores_logic);
