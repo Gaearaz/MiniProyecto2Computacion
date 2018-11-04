@@ -27,14 +27,27 @@ import co.edu.icesi.mio.model.Tmio1Servicio;
 import co.edu.icesi.mio.model.Tmio1ServicioPK;
 import co.edu.icesi.mio.model.Tmio1ServiciosSitio;
 
+/**
+ * 
+ * @author Andres Zapata & Andres Borrero Clase Test del DAO de los conductores
+ *         TMIO
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
 @Rollback(false)
 public class Test_Tmio1_Conductore_DAO {
 
+	/**
+	 * Representa una instancia de ITmio1_Conductores_DAO necesaria para correr los
+	 * métodos que se desea probar
+	 */
 	@Autowired
 	private ITmio1_Conductores_DAO conductorDAO;
 
+	/**
+	 * Test del método Save del DAO de conductores, donde se crean 2 conductores y
+	 * se agregan
+	 */
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void saveTest() {
@@ -65,6 +78,10 @@ public class Test_Tmio1_Conductore_DAO {
 		conductorDAO.save(tmioConductor1);
 	}
 
+	/**
+	 * Test del método update, donde se busca un conductor por medio de su Id Y en
+	 * caso de ser encontrado se le realiza la actualización del nombre.
+	 */
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testUpdate() {
@@ -74,6 +91,11 @@ public class Test_Tmio1_Conductore_DAO {
 		conductorDAO.update(conductor);
 	}
 
+	/**
+	 * Test del método FindByName en el cual se realiza la búsqueda de un conductor
+	 * por un nombre dado y se verifica el éxito cuando se encuentra al menos un
+	 * conductor cuyo nombre es el del parámetro
+	 */
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testFindByName() {
@@ -81,6 +103,11 @@ public class Test_Tmio1_Conductore_DAO {
 		assertNotNull("No se encontro el conductor por ese nombre", conductor);
 	}
 
+	/**
+	 * Test del método FindByLastName en el cual se realiza la búsqueda de un
+	 * conductor por un apellido dado y se verifica el éxito cuando se encuentra al
+	 * menos un conductor cuyo apellido es el del parámetro
+	 */
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testFindByLastName() {
@@ -88,6 +115,10 @@ public class Test_Tmio1_Conductore_DAO {
 		assertNotNull("No se encontro el conductor por ese apellido", conductor);
 	}
 
+	/**
+	 * Método en el cual se hace el setup de un escenario donde se han persistido
+	 * dos conductores con sus respectivos atributos
+	 */
 	private void setUpEscenario1() {
 		Tmio1Conductore tmioConductor = new Tmio1Conductore();
 		tmioConductor.setCedula("12346");
@@ -116,6 +147,10 @@ public class Test_Tmio1_Conductore_DAO {
 		conductorDAO.save(tmioConductor1);
 	}
 
+	/**
+	 * Método en el cual se hace el setup en el cual se crea un conductor, se
+	 * persiste y es asignado a dos servicios
+	 */
 	private void setUpEscenario2() {
 		Tmio1Conductore tmioConductor = new Tmio1Conductore();
 		tmioConductor.setCedula("12348");
@@ -169,6 +204,11 @@ public class Test_Tmio1_Conductore_DAO {
 		servicioDAO.save(s2);
 	}
 
+	/**
+	 * Test en el cual se hace el llamado al setup del escenario 1 y se prueba el
+	 * método TestFIndAllOrderedByBirthDate que lo que hace es devolver una lista de
+	 * conductores ordenados por su fecha de nacimiento
+	 */
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testFindALlOrderedByBirthDate() {
@@ -185,6 +225,11 @@ public class Test_Tmio1_Conductore_DAO {
 
 	}
 
+	/**
+	 * Test en el cual se hace un llamado al setup del escenario 2 y se prueba el
+	 * método driverswithservicesinmorethanonebus que se encarga de generar un arreglo con
+	 * aquellos conductores que poseen servicios en más de un bus
+	 */
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testDriversServicesInMoreThanOneBus() {
@@ -195,6 +240,11 @@ public class Test_Tmio1_Conductore_DAO {
 		assertEquals("12348", conductores.get(0).getCedula());
 	}
 
+	/**
+	 * Test en cual se prueba el método driversthatarefree que devuelve la lista de conductores
+	 * consultada que contiene a los conductores que no poseen servicios, osea que estan disponibles
+	 * para tomar un nuevo servicio y verifica un caso de prueba
+	 */
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testDriversThatAreFree() {
@@ -204,6 +254,9 @@ public class Test_Tmio1_Conductore_DAO {
 		assertEquals(3, conductores.size());
 	}
 
+	/**
+	 * Test que se encarga de probar el borrado de un conductor de la BD
+	 */
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testDelete() {
