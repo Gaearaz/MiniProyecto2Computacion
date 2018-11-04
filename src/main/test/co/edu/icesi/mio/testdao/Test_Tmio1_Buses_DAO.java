@@ -1,6 +1,7 @@
 package co.edu.icesi.mio.testdao;
 
 import static org.junit.Assert.assertEquals;
+
 import static org.junit.Assert.assertNotNull;
 
 import java.math.BigDecimal;
@@ -20,6 +21,10 @@ import co.edu.icesi.mio.model.Tmio1Bus;
 import co.edu.icesi.mio.model.Tmio1Servicio;
 import co.edu.icesi.mio.model.Tmio1ServiciosSitio;
 
+/**
+ * @author Andres Zapata & Andres Borrero Clase Test del DAO de los buses
+ *         TMIO
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
 public class Test_Tmio1_Buses_DAO {

@@ -24,6 +24,11 @@ import co.edu.icesi.mio.model.Tmio1Servicio;
 import co.edu.icesi.mio.model.Tmio1ServiciosSitio;
 import co.edu.icesi.mio.model.Tmio1SitiosRuta;
 
+/**
+ * 
+ * @author Andres Zapata & Andres Borrero Clase test del Dao de TMIO Rutas
+ *
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
 public class Test_Tmio1_Rutas_DAO {
@@ -31,9 +36,16 @@ public class Test_Tmio1_Rutas_DAO {
 	@PersistenceContext
 	private EntityManager em;
 
+	/**
+	 * Representa una instancia de ITmio1_rutas_DAO necesaria para acceder a los métodos
+	 * que se desea probar
+	 */
 	@Autowired
 	private ITmio1_Rutas_DAO rutasDAO;
 
+	/**
+	 * Test del método Save del dao de rutas, donde se crea una ruta y se persiste
+	 */
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void saveTest() {
@@ -53,6 +65,10 @@ public class Test_Tmio1_Rutas_DAO {
 		rutasDAO.save(ruta);
 	}
 
+	/**
+	 * Test del método update, donde se busca a una ruta por su Id, y en caso 
+	 * de ser encontrada, se le actualiza el Día de finalización
+	 */
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testUpdate() {
@@ -63,6 +79,10 @@ public class Test_Tmio1_Rutas_DAO {
 		rutasDAO.update(ruta);
 	}
 
+	/**
+	 * Método en el cual se hace un setup de un escenario de prueba, donde se crean
+	 * dos rutas y se persisten 
+	 */
 	private void setUpEscenario1() {
 
 		Tmio1Ruta ruta = new Tmio1Ruta();
@@ -94,6 +114,11 @@ public class Test_Tmio1_Rutas_DAO {
 		rutasDAO.save(ruta1);
 	}
 
+	/**
+	 * Método en el cual se hace test al método FindbyRangeOfDays donde se llama al setup
+	 * del escenario 1 y luego se corre el método en el cual buscamos una ruta entre dos
+	 * días expresados en forma de BigDecimal
+	 */
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testFindByRangeOfDays() {
@@ -103,6 +128,9 @@ public class Test_Tmio1_Rutas_DAO {
 		assertEquals(6, rutas.size());
 	}
 
+	/**
+	 * Test que se encarga de probar el borrado de una ruta de la BD
+	 */
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testDelete() {
