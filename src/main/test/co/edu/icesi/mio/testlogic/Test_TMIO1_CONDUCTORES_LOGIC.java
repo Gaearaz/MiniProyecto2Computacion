@@ -20,14 +20,26 @@ import co.edu.icesi.mio.logic.ITMIO1_CONDUCTORES_LOGIC;
 import co.edu.icesi.mio.model.Tmio1Conductore;
 import co.edu.icesi.mio.model.Tmio1Servicio;
 
+/**
+ * 
+ * @author Andres Zapata & Andres Borrero
+ * Clase correspondiente a los test de la lógica de los conductores 
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
 public class Test_TMIO1_CONDUCTORES_LOGIC {
 
+	/**
+	 * Atributo que represente la instancia de la lógica de los conductores 
+	 */
 	@Autowired
 	private ITMIO1_CONDUCTORES_LOGIC conductores_logic;
 
 	// Save Test
+	/**
+	 * Test en el cual se crea un conductor y se persiste
+	 * @throws LogicException en caso de error en el guardado del conductor creado
+	 */
 	@Test
 	public void acorrectSaveTest() throws LogicException {
 		assertNotNull(conductores_logic);
@@ -43,6 +55,12 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 		
 	}
 
+	/**
+	 * Test en el cual se busca probar la generación de la excepción LogicException
+	 * debido a que se busca persistir un null en la parte de la BD de los conductores
+	 * @throws LogicException si se busca agregar algo que no es un conductor o si se genera
+	 * una excepción al persistir
+	 */
 	@Test
 	public void nullSaveTest() throws LogicException {
 		assertNotNull(conductores_logic);
@@ -55,6 +73,10 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 		}
 	}
 
+	/**
+	 * Test en el que se busca persistir un conductor cuya cédula es indefinida (null)
+	 * Se captura una excepción por la falta de este campo que identifica un conductor
+	 */
 	@Test
 	public void cedulaNullTest() {
 		assertNotNull(conductores_logic);
@@ -75,6 +97,10 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 		}
 	}
 
+	/**
+	 * Test en el que se busca agregar un conductor que posee una cédula que no sigue el 
+	 * estandar
+	 */
 	@Test
 	public void cedulaNoNumericaTest() {
 		assertNotNull(conductores_logic);
@@ -95,6 +121,9 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 		}
 	}
 
+	/**
+	 * Test en el que se busca agregar un conductor que no posee nombre 
+	 */
 	@Test
 	public void nombreNullTest() {
 		assertNotNull(conductores_logic);
@@ -115,6 +144,10 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 		}
 	}
 
+	/**
+	 * Test en el que se busca agregar a un conductor que posee un nombre
+	 * que no sigue el estándar de nombre con 3 o más caracteres
+	 */
 	@Test
 	public void tamanoNombreMenor3Test() {
 		assertNotNull(conductores_logic);
@@ -134,7 +167,11 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 			assertEquals("error", e.getMessage());
 		}
 	}
-
+	
+	/**
+	 * Test en el que se busca agregar a un conductor sin apellidos, lo
+	 * cual no es permitido
+	 */
 	@Test
 	public void apellidosNullTest() {
 		assertNotNull(conductores_logic);
@@ -155,6 +192,10 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 		}
 	}
 
+	/**
+	 * Test en el cual se busca agregar a un conductor con un apellido con menos 
+	 * carácteres de lo permitido en el estándar del programa
+	 */
 	@Test
 	public void tamanoApellidosMenor3Test() {
 		assertNotNull(conductores_logic);
@@ -175,6 +216,9 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 		}
 	}
 
+	/**
+	 * Test en el que se busca agregar un conductor sin fecha de nacimiento
+	 */
 	@Test
 	public void fechaNacimientoNullTest() {
 		assertNotNull(conductores_logic);
@@ -195,6 +239,10 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 		}
 	}
 
+	/**
+	 * Test en el que se busca agregar un conductor que posee una fecha de
+	 * nacimiento no aceptada.
+	 */
 	@Test
 	public void mayorEdadTest() {
 		assertNotNull(conductores_logic);
@@ -215,6 +263,9 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 		}
 	}
 
+	/**
+	 * Test en el que se busca agregar a un conductor que no posee fecha de contratación
+	 */
 	@Test
 	public void fechaContratacionNullTest() {
 		assertNotNull(conductores_logic);
@@ -235,6 +286,10 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 		}
 	}
 
+	/**
+	 * Test en el que se busca agregar un conductor con una fecha de contratación que aún
+	 * no ha acontecido
+	 */
 	@Test
 	public void fechaContratacionFuturoTest() {
 		assertNotNull(conductores_logic);
@@ -255,6 +310,9 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 		}
 	}
 
+	/**
+	 * Test que se encarga de hacer update a un objeto null en la BD
+	 */
 	// Update test
 	@Test
 	public void nullUpdate() {
@@ -268,6 +326,10 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 		}
 	}
 
+	/**
+	 * Test que se encarga de hacer un update de una cédula nula a un conductor
+	 * registrado previamente en la base de datos
+	 */
 	@Test
 	public void cedulaNullUpdateTest() {
 		assertNotNull(conductores_logic);
@@ -282,6 +344,10 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 		}
 	}
 
+	/**
+	 * Test que se encarga de hacer un update con una cédula no válida a un conductor
+	 * registrado en una base de datos
+	 */
 	@Test
 	public void cedulaNoNumericaUpdateTest() {
 		assertNotNull(conductores_logic);
@@ -297,6 +363,10 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 		}
 	}
 
+	/** 
+	 * Test que se encarga de hacer un update de una cédula correcta pero ya persistida en
+	 * otro conductor de la base de datos
+	 */
 	@Test
 	public void cedulaCorrectaUpdateTest() {
 		assertNotNull(conductores_logic);
@@ -312,6 +382,10 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 		}
 	}
 
+	/**
+	 * Test que se encarga de hacer un update de una cédula nula a un conductor ya
+	 * registrado en la BD
+	 */
 	@Test
 	public void bnombreNullUpdateTest() {
 		assertNotNull(conductores_logic);
@@ -327,6 +401,10 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 		}
 	}
 
+	/**
+	 * Test que se encarga de intentar hacer update con un nombre menor a 3 carácteres 
+	 * a un conductor previamente persistido
+	 */
 	@Test
 	public void nombreMenor3UpdateTest() {
 		assertNotNull(conductores_logic);
@@ -342,6 +420,11 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 		}
 	}
 
+	/**
+	 * Test que se encarga de asignar un nombre válido en un update a un conductor
+	 * persistido previamente
+	 * @throws LogicException en caso de que se presente algún error inesperado al hacer update
+	 */
 	@Test
 	public void bnombreCorrectoUpdateTest() throws LogicException {
 		assertNotNull(conductores_logic);
@@ -351,7 +434,10 @@ public class Test_TMIO1_CONDUCTORES_LOGIC {
 		conductores_logic.update(tmioConductor);
 		assertEquals("Mateo", conductores_logic.findByCedula("12345").getNombre());
 	}
-
+	
+	/**
+	 * 
+	 */
 	@Test
 	public void apellidosNullUpdateTest() {
 		assertNotNull(conductores_logic);

@@ -24,7 +24,7 @@ import co.edu.icesi.mio.model.Tmio1Bus;
 public class Test_TMIO1_BUSES_LOGIC {
 	
 	/**
-	 * Atributo que representa la instancia del DAO de la lógica de los buses 
+	 * Atributo que representa la instancia de la lógica de los buses 
 	 */
 	@Autowired
 	private ITMIO1_BUSES_LOGIC buses_logica;

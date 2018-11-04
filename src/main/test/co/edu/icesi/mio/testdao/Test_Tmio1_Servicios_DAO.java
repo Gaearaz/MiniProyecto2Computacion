@@ -40,6 +40,7 @@ public class Test_Tmio1_Servicios_DAO {
 	@Autowired
 	private ITmio1_Servicios_DAO servicioDAO;
 
+<<<<<<< HEAD
 	// @Test
 	// public void testSave() {
 	// em.getTransaction().begin();
@@ -89,6 +90,8 @@ public class Test_Tmio1_Servicios_DAO {
 	 * se busca un conjunto de servicios que se encuentren entre un rango de fechas
 	 * dado
 	 */
+=======
+>>>>>>> refs/heads/master
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testFindByRangeOfDates() {
