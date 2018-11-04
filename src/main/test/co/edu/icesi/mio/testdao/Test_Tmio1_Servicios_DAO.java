@@ -21,6 +21,11 @@ import org.springframework.transaction.annotation.Transactional;
 import co.edu.icesi.mio.dao.ITmio1_Servicios_DAO;
 import co.edu.icesi.mio.model.Tmio1Servicio;
 
+/**
+ * 
+ * @author Andres Zapata & Andres Borrero Clase Test del DAO de los servicios
+ *         TMIO
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
 public class Test_Tmio1_Servicios_DAO {
@@ -28,6 +33,10 @@ public class Test_Tmio1_Servicios_DAO {
 	@PersistenceContext
 	private EntityManager em;
 
+	/**
+	 * Representa una instancia de ITmio1_Servicios_DAO necesaria para correr los
+	 * métodos que se desea probar
+	 */
 	@Autowired
 	private ITmio1_Servicios_DAO servicioDAO;
 
@@ -75,6 +84,11 @@ public class Test_Tmio1_Servicios_DAO {
 	// em.getTransaction().commit();
 	// }
 
+	/**
+	 * Test que se encarga de probar el método FindByRangeOfDates en el cual 
+	 * se busca un conjunto de servicios que se encuentren entre un rango de fechas
+	 * dado
+	 */
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testFindByRangeOfDates() {
@@ -86,6 +100,11 @@ public class Test_Tmio1_Servicios_DAO {
 //		assertEquals(4, servicios.size());
 	}
 
+	/**
+	 * Test que se encarga de probar el método ServicesSaturdaysAndSundaysOrJustSundays que consulta en
+	 * la BD los servicios que operan los sabados y domingos o sólo los domingos y los retorna en una
+	 * lista
+	 */
 	@Test
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testServicesSaturdaysAndSundaysOrJustSundays() {
